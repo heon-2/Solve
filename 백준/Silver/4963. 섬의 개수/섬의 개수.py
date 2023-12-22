@@ -1,38 +1,34 @@
 from collections import deque
-import sys
-input = sys.stdin.readline
-directy = [-1,-1,-1,0,0,1,1,1]
-directx = [-1,0,1,-1,1,-1,0,1]
+
+def bfs(y,x) :
+    visited[y][x] = True
+    q = deque()
+    q.append((y,x))
+    while q :
+        y,x = q.popleft()
+        for i in range(8) :
+            yy = y + directy[i]
+            xx = x + directx[i]
+            if 0<=yy<n and 0<=xx<m :
+                if not visited[yy][xx] and maps[yy][xx] == 1 :
+                    visited[yy][xx] = True
+                    q.append((yy,xx))
+
 
 while True :
-    island = 0
-    w,h = map(int,input().split())
-    if w==0 and h==0 :
-
+    m, n = map(int, input().split())
+    if m == 0 and n == 0 :
         break
-    graph = [list(map(int,input().split())) for _ in range(h) ]
-    visited = [[False]*w for _ in range(h) ]
-
-    def bfs(y,x) :
-
-        q = deque()
-        q.append((y,x))
-        visited[y][x] = True
-
-        while q :
-            yy,xx = q.popleft()
-            for i in range(8) :
-                dy = yy + directy[i]
-                dx = xx + directx[i]
-                if 0<=dy<h and 0<=dx<w and graph[dy][dx] == 1 :
-                    if not visited[dy][dx] :
-                        visited[dy][dx] = True
-                        q.append((dy,dx))
-
-    for i in range(h) :
-        for j in range(w) :
-            if graph[i][j] == 1 :
-                if not visited[i][j] :
-                    island += 1
-                    bfs(i,j)
+    maps = [list(map(int,input().split())) for _ in range(n)]
+    visited = [[False]*m for _ in range(n)]
+    directy=[-1,-1,-1,0,0,1,1,1]
+    directx = [-1,0,1,-1,1,-1,0,1]
+    island = 0
+    for i in range(n) :
+        for j in range(m) :
+            if not visited[i][j] and maps[i][j] == 1 :
+                island += 1
+                bfs(i,j)
     print(island)
+
+
