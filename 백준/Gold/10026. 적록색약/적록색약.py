@@ -1,57 +1,43 @@
-N = int(input())
-graph = [list(input()) for _ in range(N) ]
-import copy
 from collections import deque
-visited1 = [[False]*N for _ in range(N)]
-visited2 = [[False]*N for _ in range(N)]
-cnt1 = 0
-cnt2 = 0
-directy = [-1,0,0,1]
-directx = [0,-1,1,0]
 
-def bfs1(y,x) :
-    global cnt1
-    visited1[y][x] = True
+n = int(input())
+graph = [list(input()) for _ in range(n)]
+directy = [-1, 0, 0, 1]
+directx = [0, -1, 1, 0]
+
+
+def bfs(y, x, color):
+    visited[y][x] = True
     q = deque()
-    q.append((y,x))
+    q.append((y, x))
+    while q:
+        y, x = q.popleft()
+        for i in range(4):
+            yy = y + directy[i]
+            xx = x + directx[i]
+            if 0 <= yy < n and 0 <= xx < n and not visited[yy][xx] and graph[yy][xx] == color:
+                visited[yy][xx] = True
+                q.append((yy, xx))
 
-    while q :
-        y,x = q.popleft()
-        for i in range(4) :
-            dy = y + directy[i]
-            dx = x + directx[i]
-            if 0<=dy<N and 0<=dx<N and graph[y][x] == graph[dy][dx]:
-                if not visited1[dy][dx] :
-                    visited1[dy][dx] = True
-                    q.append((dy,dx))
-    cnt1 += 1
+case1,case2 = 0,0
+visited = [[False] * n for _ in range(n)]
+for i in range(n):
+    for j in range(n):
+        if not visited[i][j]:
+            bfs(i, j, graph[i][j])
+            case1 += 1
+# RGB 적녹색약의 경우 R이랑 G랑 반복문 돌려서 같게 맞추고 다시 bfs 대입
+visited = [[False] * n for _ in range(n)]
+for i in range(n) :
+    for j in range(n) :
+        if graph[i][j] == 'R' :
+            graph[i][j] = 'G'
 
-graph2 = copy.deepcopy(graph)
-for i in range(N) :
-    for j in range(N) :
-        if graph2[i][j] == 'G' :
-            graph2[i][j] = 'R'
-def bfs2(y,x) :
-    global cnt2
-    visited2[y][x] = True
-    q = deque()
-    q.append((y,x))
+for i in range(n) :
+    for j in range(n) :
+        if not visited[i][j]:
+            bfs(i, j, graph[i][j])
+            case2 += 1
 
-    while q :
-        y,x = q.popleft()
-        for i in range(4) :
-            dy = y + directy[i]
-            dx = x + directx[i]
-            if 0<=dy<N and 0<=dx<N and graph2[y][x] == graph2[dy][dx]:
-                if not visited2[dy][dx] :
-                    visited2[dy][dx] = True
-                    q.append((dy,dx))
-    cnt2 += 1
-
-for i in range(N) :
-    for j in range(N) :
-        if not visited1[i][j] :
-            bfs1(i,j)
-        if not visited2[i][j] :
-            bfs2(i,j)
-print(cnt1,cnt2)
+print(case1,end=' ')
+print(case2)
