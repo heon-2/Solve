@@ -3,8 +3,9 @@ def solution(A,B):
     A.sort()
     B.sort(reverse=True)
     answer = 0
-    length = min(len(A),len(B))
-    for i in range(length) :
-        answer += A[i] * B[i]
-        
+#     length = min(len(A),len(B))
+#     for i in range(length) :
+#         answer += A[i] * B[i]
+    for i,j in zip(A,B) :
+        answer += i*j
     return answer
