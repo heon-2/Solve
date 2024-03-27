@@ -11,3 +11,9 @@ function solution(n, t) {
 [문제 풀이] : - 
 [배운 점] : -
 */
+
+function solution(n, t) {
+  return n * Math.pow(2, t);
+}
+
+/* Math.pow(2,t) 이렇게도 가능함.*/
