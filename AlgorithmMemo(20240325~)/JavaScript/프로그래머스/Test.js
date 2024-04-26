@@ -23,6 +23,19 @@
 // const result = words.filter((word) => word.length > 2);
 // console.log(result); // [ 'abc', 'abcd', 'abcde', 'abcdef' ]
 
-const array = [1, 2, 3, 4, 5];
-const found = array.find((element) => element > 3);
-console.log(found);
+// const array = [1, 2, 3, 4, 5];
+// const found = array.find((element) => element > 3);
+// console.log(found); // 4
+
+// const array = ["a", "b", "c"];
+// const iterator = array.keys();
+// for (const key of iterator) {
+//   console.log(key);
+// Expected output: 0
+// Expected output: 1
+// Expected output: 2
+// }
+
+const alphabet = ["a", "b", "c"];
+const count = alphabet.push("e");
+console.log(count);
