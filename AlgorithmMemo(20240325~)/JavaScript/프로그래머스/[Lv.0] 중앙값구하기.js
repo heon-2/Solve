@@ -14,12 +14,3 @@ function solution(array) {
 [배운 점] : 자바스크립트의 sort()는 놀랍게도 유니코드 기준으로 배열을 정렬하기때문에,
 숫자의 오름차순 정렬을 할 때는 array.sort((a,b)=>a-b); 이렇게 되어야함.
 */
-
-function solution(age) {
-  age = 20;
-  if (0 < age < 100) {
-    console.log(1);
-  } else {
-    console.log(2);
-  }
-}

@@ -13,7 +13,5 @@ for i in range(N) :
         else :
             a = heappop(heap)
             print(a)
-
-
     else :
         heappush(heap,x)

@@ -16,3 +16,5 @@ i는 case-insensitive를 의미. -> 즉, 대소문자를 구분하지 않고 찾
 function solution(my_string) {
   return my_string.replace(/[aeiou]/gi, "");
 }
+
+// 이렇게 정규표현식을 괄호로 적어도 됨. 캡처링이라고 함.
