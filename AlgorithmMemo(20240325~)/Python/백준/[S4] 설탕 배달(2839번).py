@@ -1,14 +1,14 @@
-# BAG = [10e9] * 5001
-# for i in range(2000) :
-#     for j in range(2000) :
-#         SUGAR = 3*i + 5*j
-#         if SUGAR < 5001 :
-#             BAG[SUGAR] = min(BAG[SUGAR],i+j)
-# n = int(input())
-# if BAG[n] == 10e9 :
-#     print(-1)
-# else :
-#     print(BAG[n])
+BAG = [10e9] * 5001
+for i in range(2000) :
+    for j in range(2000) :
+        SUGAR = 3*i + 5*j
+        if SUGAR < 5001 :
+            BAG[SUGAR] = min(BAG[SUGAR],i+j)
+n = int(input())
+if BAG[n] == 10e9 :
+    print(-1)
+else :
+    print(BAG[n])
 
 '''
 [풀이 일자] : 2024.05.02
